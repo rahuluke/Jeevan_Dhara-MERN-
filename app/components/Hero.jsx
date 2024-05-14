@@ -34,12 +34,16 @@ export default function Hero() {
                     <button onClick={() => { handleNextButton() }} className="buttons-right absolute right-2 md:right-4 top-1/2 bg-white/50 rounded-full p-2 z-20"> <FaChevronRight size={15} /> </button>
                     <div className="image h-[50vh] md:h-[70vh] bg-red-500 w-full bg-cover transition-all duration-500 bg-center rounded-lg" style={{ backgroundImage: `url(${image[crousel]})`, filter: "brightness(70%)" }}></div>
                 </div> */}
-                <div className="relative overflow-hidden rounded-lg bg-zinc-800">
+                <div className="relative overflow-hidden rounded-lg bg-black">
+                    <div className="absolute top-0 z-10 flex w-full h-full justify-center items-center flex-col text-white gap-3">
+                        <div className="heading font-semibold text-lg px-7 text-center sm:text-xl md:text-2xl lg:text-3xl">Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
+                        <div className="para px-10 text-center sm:px-10 md:px-28 lg:text-lg lg:px-36 xl:px-64">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit repellendus omnis praesentium labore iusto perspiciatis unde tempora autem est! Sunt illum vero, similique minima pariatur culpa qui esse quae, rem autem cupiditate.</div>
+                    </div>
                     <button onClick={() => { handlePrevButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-1 left-4" ><FaChevronLeft size={15} /></button>
                     <button onClick={() => { handleNextButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-1 right-4" ><FaChevronRight size={15} /></button>
-                    <div className="img flex h-[70vh] transition-all duration-500 ease-in-out bg-zinc-800" style={{ transform: `translateX(${crousel * -100}%)` }}>
+                    <div className="img flex h-[30rem] transition-all duration-500 ease-in-out" style={{ transform: `translateX(${crousel * -100}%)` }}>
                         {image.map((url) => (
-                            <img src={url} alt={url} key={url} className="min-w-full object-cover object-center h-full opacity-50" />
+                            <img src={url} alt={url} key={url} className="min-w-full object-cover object-center h-full opacity-20" />
                         ))}
                     </div>
                 </div>
