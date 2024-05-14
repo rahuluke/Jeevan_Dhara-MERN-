@@ -34,14 +34,14 @@ export default function Hero() {
                     <button onClick={() => { handleNextButton() }} className="buttons-right absolute right-2 md:right-4 top-1/2 bg-white/50 rounded-full p-2 z-20"> <FaChevronRight size={15} /> </button>
                     <div className="image h-[50vh] md:h-[70vh] bg-red-500 w-full bg-cover transition-all duration-500 bg-center rounded-lg" style={{ backgroundImage: `url(${image[crousel]})`, filter: "brightness(70%)" }}></div>
                 </div> */}
-                <div className="relative overflow-hidden rounded-lg">
-                    <button onClick={() => { handlePrevButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-2 left-4" ><FaChevronLeft /></button>
-                    <button onClick={() => { handleNextButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-2 right-4" ><FaChevronRight /></button>
-                    {image.map((url, index) => (
-                        <div className={`${index === crousel ? "flex items-center " : "hidden "} w-full h-[70vh] bg-zinc-800`} key={index}>
-                            <Image src={url} width={1000} height={1000} className="w-full object-cover object-center h-full opacity-65" alt={url} />
-                        </div>
-                    ))}
+                <div className="relative overflow-hidden rounded-lg bg-zinc-800">
+                    <button onClick={() => { handlePrevButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-1 left-4" ><FaChevronLeft size={15} /></button>
+                    <button onClick={() => { handleNextButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-1 right-4" ><FaChevronRight size={15} /></button>
+                    <div className="img flex h-[70vh] transition-all duration-500 ease-in-out bg-zinc-800" style={{ transform: `translateX(${crousel * -100}%)` }}>
+                        {image.map((url) => (
+                            <img src={url} alt={url} key={url} className="min-w-full object-cover object-center h-full opacity-50" />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
