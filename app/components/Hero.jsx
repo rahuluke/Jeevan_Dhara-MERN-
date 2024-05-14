@@ -1,0 +1,49 @@
+"use client";
+
+import React from 'react'
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useState } from 'react';
+import Image from 'next/image';
+
+
+export default function Hero() {
+    const image = ["/hero1.png", "/hero2.png", "/hero3.png"]
+
+    const [crousel, setCrousel] = useState(0)
+
+    function handleNextButton() {
+        if (crousel + 1 > image.length - 1) {
+            setCrousel(0)
+        } else {
+            setCrousel(crousel + 1)
+        }
+    }
+    function handlePrevButton() {
+        if (crousel - 1 < 0) {
+            setCrousel(image.length - 1)
+        } else {
+            setCrousel(crousel - 1)
+        }
+    }
+
+    return (
+        <div className="md:px-4">
+            <div className="container px-4 md:px-0 m-auto">
+                {/* <div className="crousel relative">
+                    <button onClick={()=>{handlePrevButton()}} className="buttons-left absolute left-2 md:left-4 top-1/2 bg-white/50 rounded-full p-2 z-20"> <FaChevronLeft /> </button>
+                    <button onClick={() => { handleNextButton() }} className="buttons-right absolute right-2 md:right-4 top-1/2 bg-white/50 rounded-full p-2 z-20"> <FaChevronRight size={15} /> </button>
+                    <div className="image h-[50vh] md:h-[70vh] bg-red-500 w-full bg-cover transition-all duration-500 bg-center rounded-lg" style={{ backgroundImage: `url(${image[crousel]})`, filter: "brightness(70%)" }}></div>
+                </div> */}
+                <div className="relative overflow-hidden rounded-lg">
+                    <button onClick={() => { handlePrevButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-2 left-4" ><FaChevronLeft /></button>
+                    <button onClick={() => { handleNextButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-2 right-4" ><FaChevronRight /></button>
+                    {image.map((url, index) => (
+                        <div className={`${index === crousel ? "flex items-center " : "hidden "} w-full h-[70vh] bg-zinc-800`} key={index}>
+                            <Image src={url} width={1000} height={1000} className="w-full object-cover object-center h-full opacity-65" alt={url} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    )
+}
