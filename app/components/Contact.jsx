@@ -34,7 +34,7 @@ export default function Contact() {
                     <textarea name="" id="msg" className="w-full h-52 px-2 py-1 outline-zinc-600 outline-1 ring-1 rounded-sm ring-neutral-400"></textarea>
                 </div>
 
-                <button className="text-white px-4 py-2 rounded-md bg-red-500 w-full">Lets Talk</button>
+                <button className="text-white px-4 py-2 rounded-md bg-red-500 w-full font-semibold">Contact Us</button>
 
             </div>
         </div>
