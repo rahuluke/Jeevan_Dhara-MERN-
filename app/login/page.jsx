@@ -1,19 +1,26 @@
 "use client"
 
-import ConnectToDB from '@/DB/ConnectToDB'
-import React from 'react'
 import { useState } from 'react'
 
 export default function LoginPage() {
 
-    const [email, setEmail] = useState("")
+    const [name, setName] = useState("")
     const [password, setPassword] = useState("")
 
-    const getEmail = (e) => {
-        setEmail(e.target.value)
+    const getName = (e) => {
+        setName(e.target.value)
     }
     const getPassword = (e) => {
         setPassword(e.target.value)
+    }
+
+    async function sendRequest() {
+        let res = await fetch("http://localhost:3000/api/login", {
+            method: "POST",
+            body: JSON.stringify({ name, password })
+        })
+
+        console.log(res)
     }
 
     return (
@@ -26,16 +33,16 @@ export default function LoginPage() {
             <div className=" container mx-auto flex flex-col md:px-32 lg:px-52 xl:px-64 2xl:px-72 ">
                 <div className="right px-4 py-2 flex flex-col gap-6 lg:py-8 lg:px-12 xl:px-28">
 
-                    <div className="email">
-                        <label htmlFor="email" className="block mb-2">Email</label>
-                        <input type="email" name="" id="email" className="w-full px-2 py-1 outline-zinc-600 outline-1 ring-1 rounded-sm ring-neutral-400" value={email} onChange={getEmail} />
+                    <div className="name">
+                        <label htmlFor="name" className="block mb-2">Name</label>
+                        <input type="name" name="" id="name" className="w-full px-2 py-1 outline-zinc-600 outline-1 ring-1 rounded-sm ring-neutral-400" value={name} onChange={getName} />
                     </div>
                     <div className="password">
                         <label htmlFor="password" className="block mb-2">Password</label>
                         <input type="password" name="" id="password" className="w-full px-2 py-1 outline-zinc-600 outline-1 ring-1 rounded-sm ring-neutral-400" value={password} onChange={getPassword} />
                     </div>
 
-                    <button className="text-white px-4 py-2 rounded-md bg-red-500 hover:bg-red-500/90 w-full font-semibold">Login</button>
+                    <button className="text-white px-4 py-2 rounded-md bg-red-500 hover:bg-red-500/90 w-full font-semibold" onClick={sendRequest}>Login</button>
 
                 </div>
             </div>
