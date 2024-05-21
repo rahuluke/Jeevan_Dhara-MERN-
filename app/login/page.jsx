@@ -1,11 +1,12 @@
 "use client"
-
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function LoginPage() {
-
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
+
+    const router = useRouter()
 
     const getName = (e) => {
         setName(e.target.value)
@@ -20,7 +21,15 @@ export default function LoginPage() {
             body: JSON.stringify({ name, password })
         })
 
-        console.log(res)
+        const data = await res.json()
+
+        if (res.status === 200) {
+            setTimeout(() => {
+                router.push('/admin')
+            }, 2000);
+        } else {
+            // will throw error
+        }
     }
 
     return (
