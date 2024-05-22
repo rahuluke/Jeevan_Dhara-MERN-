@@ -6,26 +6,26 @@ import Link from 'next/link'
 import { useState } from 'react';
 
 
-export default function Sidebar() {
+export default function AdminPannel() {
 
     const [isOpen, setIsOpen] = useState(false)
 
     const links = [
         {
             name: "Blood Database",
-            href: "/bloods"
+            href: "/admin/bloods"
         }, {
             name: "Donate Blood",
-            href: "/donate"
+            href: "/admin/donate"
         }, {
             name: "Request Donation",
-            href: "/request"
+            href: "/admin/request"
         }, {
             name: "FAQs",
-            href: "/faq"
+            href: "/admin/faq"
         }, {
             name: "About Us",
-            href: "/about"
+            href: "/admin/about"
         }
     ]
 
@@ -38,7 +38,7 @@ export default function Sidebar() {
         <nav className="py-3 md:py-4 px-4">
             <div className="container m-auto flex items-center justify-start md:justify-between gap-6">
                 <button className="forMobi md:hidden" onClick={() => { handleHamburger() }}><HiBars3 size={30} /></button>
-                <Link href={"/"} className="logo font-semibold text-xl lg:text-2xl text-red-500">Jeevan<span className="">Dhara</span></Link>
+                <Link href={"/admin"} className="logo font-semibold text-xl lg:text-2xl text-red-500">Jeevan<span className="">Dhara</span></Link>
                 <div onClick={() => { handleHamburger() }} className={`${isOpen ? "flex" : "hidden"} overlay top-0 left-0 h-screen w-screen bg-black/40 z-[30] fixed`}></div>
                 <div className={`${isOpen ? "flex left-0" : "-left-[100%]"} flex-col sidebar fixed top-0 h-screen bg-white w-60 text-neutral-900 py-3 px-4 z-[40] transition-all duration-300 ease-in-out`}>
                     <div className="header flex justify-start items-center">

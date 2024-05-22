@@ -3,11 +3,11 @@ const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "name is required"],
     },
     password: {
       type: String,
-      required: true,
+      required: [true, "password is required"],
     },
   },
   { timestamps: true }

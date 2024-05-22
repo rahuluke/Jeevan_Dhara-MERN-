@@ -29,6 +29,10 @@ export default function Contact() {
                     <label htmlFor="phone" className="block mb-2">Phone number</label>
                     <input type="number" name="" id="phone" className="w-full px-2 py-1 outline-zinc-600 outline-1 ring-1 rounded-sm ring-neutral-400" />
                 </div>
+                <div className="blood">
+                    <label htmlFor="blood" className="block mb-2">Blood Type <span className="text-red-600">*</span></label>
+                    <input type="blood" name="" id="blood" className="w-full px-2 py-1 outline-zinc-600 outline-1 ring-1 rounded-sm ring-neutral-400" />
+                </div>
                 <div className="messege">
                     <label htmlFor="msg" className="block mb-2">Message</label>
                     <textarea name="" id="msg" className="w-full h-52 px-2 py-1 outline-zinc-600 outline-1 ring-1 rounded-sm ring-neutral-400"></textarea>
