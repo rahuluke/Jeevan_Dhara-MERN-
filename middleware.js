@@ -1,26 +1,23 @@
-import { cookies } from 'next/headers'
-import jsonwebtoken, { verify } from 'jsonwebtoken'
+import { NextResponse } from "next/server"
 
-// This function can be marked `async` if using `await` inside
-export function middleware(request) {
-
-
-    // console.log(request.cookies.get('token'))
+export async function middleware(request) {
 
     const verifyToken = async (token) => {
         let req = await fetch('http://localhost:3000/api/verify', {
-            body: JSON.stringify({token}),
+            body: JSON.stringify({ token }),
             method: "POST"
         })
-        let data = await req.json()
-        console.log(data)
+        return req
     }
 
     if (request.nextUrl.pathname.startsWith('/login')) {
         const token = request.cookies.get('token')
 
         if (token) {
-            verifyToken(token.value)
+            const response = await verifyToken(token.value)
+            if(response.status == 200){
+                return NextResponse.redirect(new URL('/admin', request.url)) // if token is vailed redirect the user
+            }
         }
 
     }
