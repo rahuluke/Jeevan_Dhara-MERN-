@@ -6,8 +6,6 @@ export default function ConnectToDB() {
             dbName: process.env.MONGODB_DB_NAME
         })
 
-        console.log("connected to DB")
-
 
     } catch (e) {
         console.log("error occured", e)

@@ -1,10 +1,18 @@
+import ConnectToDB from "@/DB/ConnectToDB";
+import Doners from "@/schema/Doners";
 import { NextResponse } from "next/server";
 
 export async function GET() {
 
-    try { } catch (err) {
+    try {
+        ConnectToDB()
+
+        let allEntries = await Doners.find({})
+        return NextResponse.json({ data: allEntries })
+
+     } catch (err) {
         console.log(err)
+        return NextResponse.json({ message: "something went wrong" })
     }
 
-    return NextResponse.json({ message: "returns all records of bloods available in db" })
 }

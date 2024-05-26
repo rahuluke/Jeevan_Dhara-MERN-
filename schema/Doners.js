@@ -18,6 +18,7 @@ const userSchema = new Schema(
     },
     quantity: {
         type: Number,
+        required: [true, "quantity of blood is required"]
     }
   },
   { timestamps: true }
