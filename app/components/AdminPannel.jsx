@@ -15,11 +15,11 @@ export default function AdminPannel() {
             name: "Blood Database",
             href: "/admin/bloods"
         }, {
-            name: "Donate Blood",
-            href: "/admin/donate"
+            name: "Donor Requests",
+            href: "/admin/donor"
         }, {
-            name: "Request Donation",
-            href: "/admin/request"
+            name: "Requests",
+            href: "/admin/requests"
         }, {
             name: "FAQs",
             href: "/admin/faq"

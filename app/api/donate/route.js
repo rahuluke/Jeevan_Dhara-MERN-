@@ -26,3 +26,21 @@ export async function POST(req, res) {
     }
 
 }
+
+export async function GET() {
+    try {
+  
+      ConnectToDB();
+  
+      let data = await Donate.find({});
+      return NextResponse.json({data})
+  
+    } catch (error) {
+      console.log(error);
+      return NextResponse.json(
+        { messege: "something went wrong" },
+        { status: 500 }
+      );
+    }
+  }
+  
