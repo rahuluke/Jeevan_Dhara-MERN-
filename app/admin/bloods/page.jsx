@@ -53,7 +53,7 @@ export default function BloodsPage() {
                 <div className="heading text-3xl font-semibold text-center my-4">FAQs</div>
                 <div className="faqs flex flex-col gap-6">
                     {Donors?.map((item, index) => (
-                        <details className="group border-b-[1px] py-4 border-neutral-300 w-full cursor-pointer" key={index}>
+                        <details className="group border-b-[1px] py-4 border-neutral-300 w-full cursor-pointer" key={index} open>
                             <summary className="text-neutral-900 flex items-center justify-between gap-2">
                                 <div className="left font-semibold text-xl">{item.name}</div>
                                 <div className="right flex items-center gap-4">

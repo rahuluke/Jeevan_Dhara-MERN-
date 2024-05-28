@@ -1,6 +1,10 @@
-import { NextResponse } from 'next/server'
+import ConnectToDB from "@/DB/ConnectToDB"
+import Requests from "@/schema/Requests"
+import { NextResponse } from "next/server"
+import jsonwebtoken from "jsonwebtoken";
+import { cookies } from "next/headers";
 
-export async function POST() {
+export async function DELETE(req, res) {
 
     const { id } = await req.json()
     const cookieStore = cookies();
@@ -15,7 +19,7 @@ export async function POST() {
             if (isVailed) {
                 try {
                     ConnectToDB();
-                    await Donate.findByIdAndDelete({ _id: id })
+                    await Requests.findByIdAndDelete({ _id: id })
                     return NextResponse.json({ message: "Item removed sucessfully" }, { status: 200 })
                 } catch (error) {
                     console.log(error);

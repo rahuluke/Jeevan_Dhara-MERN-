@@ -1,6 +1,10 @@
-import { NextResponse } from 'next/server'
+import ConnectToDB from "@/DB/ConnectToDB"
+import { NextResponse } from "next/server"
+import jsonwebtoken from "jsonwebtoken";
+import { cookies } from "next/headers";
+import Donate from "@/schema/Donate";
 
-export async function POST() {
+export async function DELETE(req, res) {
 
     const { id } = await req.json()
     const cookieStore = cookies();
