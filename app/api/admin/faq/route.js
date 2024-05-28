@@ -15,11 +15,6 @@ export async function POST(req, res) {
     filter.push({ _id: item._id });
   });
 
-  let update = [];
-  AllFAQs.forEach((item) => {
-    filter.push({ title: item.title, paragraph: item.paragraph });
-  });
-
   if (token) {
     // checks if token is vailed or not
     try {
@@ -29,14 +24,12 @@ export async function POST(req, res) {
         try {
           ConnectToDB();
 
-          AllFAQs.map(async(item)=>{
-              await FAQs.findByIdAndUpdate(item._id, {
-                title: item.title,
-                paragraph: item.paragraph,
-              });
+          AllFAQs.map(async (item) => {
+            await FAQs.findByIdAndUpdate(item._id, {
+              title: item.title,
+              paragraph: item.paragraph,
+            });
           })
-
-          console.log("kya update hua?");
 
           return NextResponse.json({ message: "Update Sucessfull" });
         } catch (error) {
