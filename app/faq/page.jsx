@@ -1,6 +1,6 @@
 import React from 'react'
 import FAQs from '../components/FAQs'
-
+import { Suspense } from 'react'
 export default function FAQsPage() {
     return (
         <>
@@ -9,7 +9,9 @@ export default function FAQsPage() {
                 <div className="para text-center mt-3 md:text-lg">ask us every thing we are ready to answer all of your questions </div>
             </div>
 
-           <FAQs/>
+            <FAQs />
+
+
         </>
     )
 }

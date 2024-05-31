@@ -9,7 +9,7 @@ export default function DonatePage() {
         <div className="para text-center mt-3 md:text-lg">Help us to by donating bolood this may save a persons life, help them and save their lives</div>
       </div>
 
-      <Contact />
+      <Contact requestMethod={"donate"}/>
     </>
   )
 }

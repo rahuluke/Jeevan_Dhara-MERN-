@@ -21,4 +21,15 @@ export async function middleware(request) {
         }
 
     }
+    if (request.nextUrl.pathname.startsWith('/admin')) {
+        const token = request.cookies.get('token')
+
+        if (token) {
+            const response = await verifyToken(token.value)
+            if(response.status != 200){
+                return NextResponse.redirect(new URL('/login', request.url)) // if token is vailed redirect the user
+            }
+        }
+
+    }
 }
