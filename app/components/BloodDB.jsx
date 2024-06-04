@@ -19,7 +19,6 @@ export default function BloodDB() {
     return (
         <div className="md:px-4">
             <div className="container m-auto px-4 md:px-0">
-                <div className="heading text-2xl font-semibold text-zinc-800 my-5 sm:text-3xl md:my-8 text-center">Blood DB</div>
                 {AllRecords ? AllRecords.map((item) => (
                     <div className="data my-4 text-zinc-800 flex flex-col gap-4">
                         <div className="box flex flex-col ring-1 py-2 px-2 sm:px-4 md:py-4 ring-zinc-300 rounded-lg">
