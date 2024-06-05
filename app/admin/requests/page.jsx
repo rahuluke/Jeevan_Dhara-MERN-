@@ -7,7 +7,7 @@ import { Bounce, ToastContainer, toast } from "react-toastify";
 export default function RequestsPage() {
 
   const [Requests, setRequests] = useState([])
-  const [Render, setRender] = useState(undefined)
+  const [render, setRender] = useState(false)
 
   const getAllRequests = async () => {
     let res = await fetch('http://localhost:3000/api/requests')
@@ -26,7 +26,7 @@ export default function RequestsPage() {
 
     if (data.status == 200) {
       sucessMsg("feild deleted sucessfully")
-      setRender(Math.floor(Math.random()))
+      setRender(!render)
     } else {
       errorMsg("can not delete feild")
     }
@@ -63,7 +63,7 @@ export default function RequestsPage() {
 
   useEffect(() => {
     getAllRequests()
-  }, [Render])
+  }, [render])
 
 
   return (
@@ -90,7 +90,6 @@ export default function RequestsPage() {
                   <div className="localty text-xl font-semibold flex items-center justify-between">Name: {item.firstName} <button className="text-red-600" onClick={() => {
                     deleteItem(index)
                   }}><MdDelete size={25} /></button></div>
-                  <div className="upload-time text-sm text-zinc-500">Request Time: 5hrs ago</div>
                 </div>
                 <div className="mid flex flex-col"><div className="name text-zinc-600">Email: <span className="text-zinc-600 font-bold">{item.email}</span></div> <div className="age text-zinc-600">Phone Number: {item.phone}</div> </div>
                 <div className="bottom mt-2 flex flex-col gap-1">

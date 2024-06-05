@@ -10,7 +10,7 @@ import { Bounce, ToastContainer, toast } from 'react-toastify';
 export default function BloodsPage() {
 
     const [Donors, setDonors] = useState([])
-    const [Render, setRender] = useState(undefined)
+    const [render, setRender] = useState(false)
 
     const getAllDonors = async () => {
         let res = await fetch('http://localhost:3000/api/blood_db')
@@ -25,7 +25,7 @@ export default function BloodsPage() {
 
         if (data.status == 200) {
             sucessMsg("feild added sucessfully")
-            setRender(Math.floor(Math.random))
+            setRender(!render)
         } else {
             errorMsg("can not add feild")
         }
@@ -40,7 +40,7 @@ export default function BloodsPage() {
 
         if (data.status == 200) {
             sucessMsg("feild deleted sucessfully")
-            setRender(Math.floor(Math.random()))
+            setRender(!render)
         } else {
             errorMsg("can not delete feild")
         }
@@ -144,7 +144,8 @@ export default function BloodsPage() {
 
     useEffect(() => {
         getAllDonors()
-    }, [Render])
+        console.log("i re rendered")
+    }, [render])
 
     return (
         <>
