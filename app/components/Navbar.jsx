@@ -17,6 +17,10 @@ export default function Navbar() {
         name: "Blood Database",
         href: "/bloods"
     }, {
+        name: "Blogs",
+        href: "/blogs"
+    }
+        , {
         name: "Donate Blood",
         href: "/donate"
     }, {

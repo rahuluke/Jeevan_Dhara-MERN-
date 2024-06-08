@@ -14,6 +14,9 @@ export default function AdminPannel() {
         {
             name: "Blood Database",
             href: "/admin/bloods"
+        },{
+            name:"Blogs",
+            href: "/admin/blogs"
         }, {
             name: "Donor Requests",
             href: "/admin/donor"

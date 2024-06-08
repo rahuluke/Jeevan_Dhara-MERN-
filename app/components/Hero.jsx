@@ -36,8 +36,8 @@ export default function Hero() {
                 </div> */}
                 <div className="relative overflow-hidden rounded-lg bg-black">
                     <div className="absolute top-0 z-10 flex w-full h-full justify-center items-center flex-col text-white gap-3">
-                        <div className="heading font-semibold text-lg px-7 text-center sm:text-xl md:text-2xl lg:text-3xl">Lorem ipsum dolor, sit amet consectetur adipisicing.</div>
-                        <div className="para px-10 text-center sm:px-10 md:px-28 lg:text-lg lg:px-36 xl:px-64">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit repellendus omnis praesentium labore iusto perspiciatis unde tempora autem est! Sunt illum vero, similique minima pariatur culpa qui esse quae, rem autem cupiditate.</div>
+                        <div className="heading font-semibold text-lg px-7 text-center sm:text-xl md:text-2xl lg:text-3xl">Empowering Donors, Saving Lives</div>
+                        <div className="para px-10 text-center sm:px-10 md:px-28 lg:text-lg lg:px-36 xl:px-64">Join the movement. Become a blood donor and be the hero someone desperately needs. With just one donation, you can empower our community and make a real difference in someone's life.</div>
                     </div>
                     <button onClick={() => { handlePrevButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-1 left-4" ><FaChevronLeft size={15} /></button>
                     <button onClick={() => { handleNextButton() }} className="z-20 absolute top-1/2 bg-white/90 rounded-full p-1 right-4" ><FaChevronRight size={15} /></button>

@@ -9,17 +9,17 @@ import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 export default function BloodsPage() {
 
-    const [Donors, setDonors] = useState([])
+    const [blogs, setBlogs] = useState([])
     const [render, setRender] = useState(false)
 
-    const getAllDonors = async () => {
-        let res = await fetch('http://localhost:3000/api/blood_db')
+    const getAllBlogs = async () => {
+        let res = await fetch('http://localhost:3000/api/blogs')
         let data = await res.json()
-        setDonors(data.data)
+        setBlogs(data.data)
     }
 
     const addFeild = async () => {
-        let data = await fetch('http://localhost:3000/api/admin/blood_db', {
+        let data = await fetch('http://localhost:3000/api/admin/blogs', {
             method: "POST",
         })
 
@@ -33,7 +33,7 @@ export default function BloodsPage() {
     }
 
     const removeFeild = async (id) => {
-        let data = await fetch('http://localhost:3000/api/admin/blood_db', {
+        let data = await fetch('http://localhost:3000/api/admin/blogs', {
             method: "DELETE",
             body: JSON.stringify({ id })
         })
@@ -47,61 +47,71 @@ export default function BloodsPage() {
 
     }
 
-    const updateName = (event, id) => {
-        let data = [...Donors]
+    const updateTitle = (event, id) => {
+        let data = [...blogs]
 
         let donorIndex = data.findIndex((item) => item._id == id)
         if (donorIndex != -1) {
-            data[donorIndex].name = event.target.value
-            setDonors(data)
+            data[donorIndex].title = event.target.value
+            setBlogs(data)
         }
 
     }
-    const updateRegion = (event, id) => {
-        let data = [...Donors]
+    const updateDescription = (event, id) => {
+        let data = [...blogs]
 
         let donorIndex = data.findIndex((item) => item._id == id)
         if (donorIndex != -1) {
-            data[donorIndex].region = event.target.value
-            setDonors(data)
+            data[donorIndex].description = event.target.value
+            setBlogs(data)
         }
 
     }
-    const updateAge = (event, id) => {
-        let data = [...Donors]
+    const updateImageUrl = (event, id) => {
+        let data = [...blogs]
 
         let donorIndex = data.findIndex((item) => item._id == id)
         if (donorIndex != -1) {
-            data[donorIndex].age = event.target.value
-            setDonors(data)
+            data[donorIndex].imageUrl = event.target.value
+            setBlogs(data)
         }
 
     }
-    const updateBloodType = (event, id) => {
-        let data = [...Donors]
+    const updatePara1 = (event, id) => {
+        let data = [...blogs]
 
         let donorIndex = data.findIndex((item) => item._id == id)
         if (donorIndex != -1) {
-            data[donorIndex].bloodType = event.target.value
-            setDonors(data)
+            data[donorIndex].para1 = event.target.value
+            setBlogs(data)
         }
 
     }
-    const updateQuantity = (event, id) => {
-        let data = [...Donors]
+    const updatePara2 = (event, id) => {
+        let data = [...blogs]
 
         let donorIndex = data.findIndex((item) => item._id == id)
         if (donorIndex != -1) {
-            data[donorIndex].quantity = event.target.value
-            setDonors(data)
+            data[donorIndex].para2 = event.target.value
+            setBlogs(data)
+        }
+
+    }
+    const updatePara3 = (event, id) => {
+        let data = [...blogs]
+
+        let donorIndex = data.findIndex((item) => item._id == id)
+        if (donorIndex != -1) {
+            data[donorIndex].para3 = event.target.value
+            setBlogs(data)
         }
 
     }
 
     const updateRecords = async () => {
-        let data = await fetch("http://localhost:3000/api/admin/blood_db", {
+        let data = await fetch("http://localhost:3000/api/admin/blogs", {
             method: "PUT",
-            body: JSON.stringify({ AllRecords: Donors })
+            body: JSON.stringify({ AllRecords: blogs })
         })
 
         if (data.status == 200) {
@@ -143,8 +153,7 @@ export default function BloodsPage() {
 
 
     useEffect(() => {
-        getAllDonors()
-        console.log("i re rendered")
+        getAllBlogs()
     }, [render])
 
     return (
@@ -164,46 +173,52 @@ export default function BloodsPage() {
 
             <div className="md:mx-4">
                 <div className="container m-auto px-4 md:px-0">
-                    <div className="heading text-3xl font-semibold text-center my-4">Blood DB</div>
+                    <div className="heading text-3xl font-semibold text-center my-4">Blogs</div>
                     <div className="faqs flex flex-col gap-6">
-                        {Donors?.map((item, index) => (
-                            <details className="group border-b-[1px] py-4 border-neutral-300 w-full cursor-pointer" key={index} open>
-                                <summary className="text-neutral-900 flex items-center justify-between gap-2">
-                                    <div className="left font-semibold text-xl">{item.name}</div>
+                        {blogs?.map((item, index) => (
+                            <details className="group border-b-[1px] py-4 border-zinc-300 w-full cursor-pointer" key={index} open>
+                                <summary className="text-zinc-900 flex items-center justify-between gap-2">
+                                    <div className="left font-semibold text-xl">{item.title}</div>
                                     <div className="right flex items-center gap-4">
                                         <button className="text-red-600"><MdDelete size={20} onClick={() => { removeFeild(item._id) }} /></button>
                                         <div className="group-open:rotate-180 flex gap-2"><HiOutlineChevronDown size={26} /> </div>
                                     </div>
                                 </summary>
                                 <div className="faq flex flex-col my-2">
-                                    <label htmlFor={`name${index}`}>
-                                        <div className="py-2 flex items-center justify-between">Name </div>
-                                        <input type="text" name={`name${index}`} id={`name${index}`} className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.name} onChange={(e) => {
-                                            updateName(e, item._id)
+                                    <label htmlFor="title">
+                                        <div className="py-2 flex items-center justify-between">Title </div>
+                                        <input type="text" name="title" id="title" className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.title} onChange={(e) => {
+                                            updateTitle(e, item._id)
                                         }} />
                                     </label>
-                                    <label htmlFor={`region${index}`}>
+                                    <label htmlFor="description">
                                         <div className="block py-2">Region</div>
-                                        <input type="text" name={`region${index}`} id={`region${index}`} className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.region} onChange={(e) => {
-                                            updateRegion(e, item._id)
+                                        <input type="text" name="description" id="description" className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.description} onChange={(e) => {
+                                            updateDescription(e, item._id)
                                         }} />
                                     </label>
-                                    <label htmlFor={`age${index}`}>
+                                    <label htmlFor="imageUrl">
                                         <div className="block py-2">Age</div>
-                                        <input type="number" name={`age${index}`} id={`age${index}`} className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.age} onChange={(e) => {
-                                            updateAge(e, item._id)
+                                        <input type="number" name="imageUrl" id="imageUrl" className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.imageUrl} onChange={(e) => {
+                                            updateImageUrl(e, item._id)
                                         }} />
                                     </label>
-                                    <label htmlFor={`bloodType${index}`}>
+                                    <label htmlFor="para1">
                                         <div className="block py-2">Blood Type</div>
-                                        <input type="text" name={`bloodType${index}`} id={`bloodType${index}`} className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.bloodType} onChange={(e) => {
-                                            updateBloodType(e, item._id)
+                                        <input type="text" name="para1" id="para1" className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.para1} onChange={(e) => {
+                                            updatePara1(e, item._id)
                                         }} />
                                     </label>
-                                    <label htmlFor={`qty${index}`}>
-                                        <div className="block py-2">Quantity</div>
-                                        <input type="number" name={`qty${index}`} id={`qty${index}`} className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.quantity} onChange={(e) => {
-                                            updateQuantity(e, item._id)
+                                    <label htmlFor="para2">
+                                        <div className="block py-2">Blood Type</div>
+                                        <input type="text" name="para2" id="para2" className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.para2} onChange={(e) => {
+                                            updatePara2(e, item._id)
+                                        }} />
+                                    </label>
+                                    <label htmlFor="para3">
+                                        <div className="block py-2">Blood Type</div>
+                                        <input type="text" name="para3" id="para3" className="px-2 rounded-sm outline-none ring-1 ring-zinc-400 w-full" value={item.para3} onChange={(e) => {
+                                            updatePara3(e, item._id)
                                         }} />
                                     </label>
                                 </div>
