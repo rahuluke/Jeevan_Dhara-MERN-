@@ -55,7 +55,7 @@ export async function POST(req, res) {
           await Blogs.create({
             title: "Enter name",
             description: "description",
-            imageUrl: "/w-1.png",
+            imageUrl: "w-1.png",
             para1: "para1",
             para2: "para2",
             para3: "para3",

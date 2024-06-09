@@ -32,7 +32,7 @@ export default function AboutCmp() {
               <div className="mt-4">{About[0].para2}</div>
             </div>
             <div className="text-center mt-6 lg:w-[40%] xl:rounded-lg overflow-hidden">
-              <Image src="/w-1.png" width={800} height={800} />
+              <Image src="/about1.png" width={800} height={800} />
             </div>
           </div>
           <div className="mission">
@@ -44,7 +44,7 @@ export default function AboutCmp() {
                 <div className="mt-4">{About[0].para4}</div>
               </div>
               <div className="text-center mt-6 lg:w-[40%] xl:rounded-lg overflow-hidden">
-                <Image src="/w-1.png" width={800} height={800} />
+                <Image src="/about2.png" width={800} height={800} />
               </div>
             </div>
           </div>

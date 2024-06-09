@@ -27,7 +27,7 @@ export default function Hero() {
     }
 
     return (
-        <div className="md:px-4">
+        <div className="md:px-4 mt-4">
             <div className="container px-4 md:px-0 m-auto">
                 {/* <div className="crousel relative">
                     <button onClick={()=>{handlePrevButton()}} className="buttons-left absolute left-2 md:left-4 top-1/2 bg-white/50 rounded-full p-2 z-20"> <FaChevronLeft /> </button>
