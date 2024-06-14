@@ -44,7 +44,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="py-3 md:py-4 px-4 bg-red-500">
+    <nav className="py-3 md:py-4 px-4 bg-red-500 sticky top-0 z-[200]">
       <div className="container m-auto flex items-center justify-between">
         <Link
           href={"/"}

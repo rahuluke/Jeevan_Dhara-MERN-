@@ -22,7 +22,7 @@ export default function BlogsCmp() {
   return (
     <div className="flex flex-col gap-6 px-4 md:px-0">
       {loaded && blogs.length == 0 ? (
-        <div className="flex items-center justify-center h-[50vh]">
+        <div className="flex items-center justify-center h-[20vh]">
           <div className="">No Entries found</div>
         </div>
       ) : (
