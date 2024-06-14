@@ -3,8 +3,6 @@
 import React from 'react'
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useState } from 'react';
-import Image from 'next/image';
-
 
 export default function Hero() {
     const image = ["/hero1.png", "/hero2.png", "/hero3.png"]
@@ -25,6 +23,10 @@ export default function Hero() {
             setCrousel(crousel - 1)
         }
     }
+
+    setTimeout(() => {
+        handleNextButton()
+    }, 4000);
 
     return (
         <div className="md:px-4 mt-4">
