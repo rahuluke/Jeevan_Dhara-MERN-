@@ -4,9 +4,11 @@ import { HiBars3 } from "react-icons/hi2";
 import { HiOutlineX } from "react-icons/hi";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AdminPannel() {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const links = [
     {
@@ -37,6 +39,20 @@ export default function AdminPannel() {
 
   function handleHamburger() {
     setIsOpen(!isOpen);
+  }
+
+  async function removeToken() {
+    let res = await fetch("http://localhost:3000/api/logout", {
+      method: "POST",
+    });
+
+    if (res.status === 200) {
+      setTimeout(() => {
+        router.push("/login");
+      });
+    } else {
+      // will throw error
+    }
   }
 
   return (
@@ -94,7 +110,7 @@ export default function AdminPannel() {
             ))}
           </ul>
         </div>
-        <ul className="hidden md:flex gap-7 md:text-sm lg:text-base">
+        <ul className="hidden md:flex items-center gap-7 md:text-sm lg:text-base">
           {links.map((link, key) => (
             <li key={key}>
               <Link
@@ -105,6 +121,14 @@ export default function AdminPannel() {
               </Link>
             </li>
           ))}
+          <button
+            className="text-white bg-white/15 rounded-sm ring-1 ring-white/40 hover:bg-white/20 px-4 py-1 "
+            onClick={() => {
+              removeToken();
+            }}
+          >
+            logout
+          </button>
         </ul>
       </div>
     </nav>

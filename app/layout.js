@@ -20,7 +20,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
-        {pathname.startsWith("/admin") ? <AdminPannel /> : <Navbar />}
+        {pathname.startsWith("/admin") && <AdminPannel />}
+        {!pathname.startsWith("/login") && !pathname.startsWith("/admin") &&  <Navbar />}
         <div className="min-h-screen">{children}</div>
         <Footer />
       </body>
