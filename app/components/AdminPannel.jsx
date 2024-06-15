@@ -108,6 +108,14 @@ export default function AdminPannel() {
                 </Link>
               </li>
             ))}
+            <button
+              className="text-center rounded-sm bg-red-500 text-white px-4 py-1 "
+              onClick={() => {
+                removeToken();
+              }}
+            >
+              logout
+            </button>
           </ul>
         </div>
         <ul className="hidden md:flex items-center gap-7 md:text-sm lg:text-base">
