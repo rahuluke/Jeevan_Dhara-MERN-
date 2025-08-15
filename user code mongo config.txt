@@ -1,7 +1,1 @@
-{
-  "_id": {
-    "$oid": "66652f1d8c2671c2e5f2393e"
-  },
-  "name": "admin",
-  "password": "$2b$10$bbp2vd/VBIM8R7Tq2MYJyO/LmREj.g8iFn7sYMAJwLSdE0JGePly2"
-}
+#empty
